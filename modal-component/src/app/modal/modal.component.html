@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="https://openlayers.org/en/v6.2.1/css/ol.css" type="text/css">
+
+<div id="modal-content-wrapper">
+    <div id="map-frame">
+        <div id="map" class="map"></div>
+        <footer id="modal-footer">
+            <!-- <button mat-raised-button id="modal-action-button" (click)="actionFunction()">Logout</button> -->
+            <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">salir </button>
+            <input mat-raised-button type="file" accept=".zip" (change)="cargandoJson($event.target.files)" multiple>
+        </footer>
+    </div>
+</div>
