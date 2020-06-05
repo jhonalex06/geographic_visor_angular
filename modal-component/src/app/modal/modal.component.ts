@@ -9,6 +9,9 @@ import View from 'ol/View';
 import XYZ from 'ol/source/XYZ';
 import {WFS, GeoJSON} from 'ol/format';
 import {get as getProjection} from 'ol/proj';
+import proj4 from 'proj4';
+import {register} from 'ol/proj/proj4';
+import Projection from 'ol/proj/Projection';
 import {getWidth} from 'ol/extent';
 import TileGrid from 'ol/tilegrid/TileGrid';
 import VectorSource from 'ol/source/Vector';
@@ -87,11 +90,21 @@ export class ModalComponent implements OnInit {
       })
     });
 
+    proj4.defs("EPSG:2100", "+proj=tmerc +lat_0=4.0 +lon_0=-73.0 +k=0.9992 +x_0=5000000 +y_0=2000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
+    register(proj4);
+    const swissProjection = getProjection('EPSG:2100');
+
+    var projection = new Projection({
+      code: 'EPSG:2154',
+      units: 'm'
+    });
+
     this.map = new Map({
       target: 'map',
       layers: [raster, layers[0], layers[1], layers[2], layers[3]],
       view: new View({
-        center: [-8244772.758, 536268.976],
+        projection: swissProjection,
+        center: [5000000, 2000000],
         zoom: 8
       })
     });

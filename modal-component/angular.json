@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "modal-component"
+  "defaultProject": "modal-component",
+  "cli": {
+    "analytics": "79f4720f-4d5d-405c-b881-1baffb3cdcf2"
+  }
 }
